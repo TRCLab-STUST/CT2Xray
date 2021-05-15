@@ -90,7 +90,7 @@ def main():
 
     # # # # #
     # Calculate
-    result_image_data = np.zeros((LENGTH, WIDTH), np.uint)#ma class to 0
+    result_image_data = np.zeros((LENGTH, WIDTH), np.uint)#make class to 0
 
 
     Y = 0
@@ -98,7 +98,7 @@ def main():
         # # 2020/12/20 10:18
         # + Add OpenCV read method
         img_orig = cv2.imread(ct_image)
-        img_gray = cv2.cvtColor(img_orig, cv2.COLOR_RGB2GRAY)
+        img_gray = cv2.cvtColor(img_orig, cv2.COLOR_RGB2GRAY) ##gray imge
 
         # 畫出直方圖
 
@@ -110,13 +110,13 @@ def main():
         # return 0
         # cv2.imwrite("result31.png",img_gray)
 
-        _, binary =cv2.threshold(img_gray, 200, 255, cv2.THRESH_BINARY_INV)
+        _, binary =cv2.threshold(img_gray, 200, 255, cv2.THRESH_BINARY_INV)##Binarization
         # _, binary = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11,
         #                                   3), cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        #                                                             cv2.THRESH_BINARY, 11, 3    )
+        #                                                             cv2.THRESH_BINARY, 11, 3    ) 自適應二值化
         #
-        # contours, _ = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-        # cv2.drawContours(img_gray, contours, -1, 0, cv2.FILLED)
+        contours, _ = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+        cv2.drawContours(img_gray, contours, -1, 0, cv2.FILLED)
 
         # --------------jast show image for now
         # cv2.imshow( "result123.png", np.array(img_gray))# show gray image
