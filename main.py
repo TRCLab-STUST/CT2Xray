@@ -102,7 +102,7 @@ def main():
 
         # 畫出直方圖
 
-        # img_gray = cv2.GaussianBlur(img_gray, (5, 5), 0)  # 高斯模糊
+        #img_gray = cv2.GaussianBlur(img_gray, (5, 5), 0)  # 高斯模糊
         # img_gray = cv2.medianBlur(img_gray, 9)##中值滤波
         # cv2.imshow( "result123.png", np.array(img_gray))# show gra    y image
         # cv2.waitKey(0)
@@ -113,7 +113,7 @@ def main():
         _, binary =cv2.threshold(img_gray, 200, 255, cv2.THRESH_BINARY_INV)##Binarization
         # _, binary = cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11,
         #                                   3), cv2.adaptiveThreshold(img_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        #                                                             cv2.THRESH_BINARY, 11, 3    ) 自適應二值化
+        #                                                             cv2.THRESH_BINARY, 11, 3    ) ##自適應二值化
         #
         contours, _ = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
         cv2.drawContours(img_gray, contours, -1, 0, cv2.FILLED)
@@ -129,9 +129,9 @@ def main():
         # # 2020/12/20 10:15
         # - Change image read method
         # img = Image.open(ct_image).convert("L")
-        data = np.array(img_gray, dtype=np.uint8)
-        # +print(data)
-        add_data = np.sum(data, axis=0)
+        data = np.array(img_gray, dtype=np.uint8)##make array
+
+        add_data = np.sum(data, axis=0)##class data to compress column
         # print(add_data)
         # # - Deprecated
         # for w in range(WIDTH):
@@ -139,6 +139,7 @@ def main():
         #         result_image_data[Y][w] += data[h][w]
         # for i in range(1):
         print(len(add_data))
+
         result_image_data[Y] = add_data
         # result_image_data[Y] = scale_range_a(add_data, 0, 255)
 
